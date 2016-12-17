@@ -5,11 +5,15 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var routes = require('./app/routes/index'); 
+var routes = require('./app/routes/index');
+var alumnos= require('./app/routes/alumnos');
+var mediaAlumnos= require('./app/routes/mediaAlumnos');
+var mediaAlumno= require('./app/routes/mediaAlumno');
+var asignaturas= require('./app/routes/asignaturas');
+var matriculas= require('./app/routes/matriculas');
 var users = require('./app/routes/users'); 
 
 var app = express();
-
 //cargamos el modelo de la base de datos
 var db = require('./app/models/db.js');
 //hacemos el modelo visible al enrutador
@@ -32,6 +36,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/Alumnos',alumnos);
+app.use('/GetMediaAlumnos',mediaAlumnos);
+app.use('/MediaAlumno',mediaAlumno);
+app.use('/asignaturas',asignaturas);
+app.use('/Matriculas',matriculas);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

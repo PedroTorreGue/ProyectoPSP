@@ -28,6 +28,20 @@ module.exports.getMediaAlumnos = function(req, res){
         res.status(status).json(rows)
   });
 };
+// obtener la media de u alumno
+module.exports.mediaAlumno = function(req, res){
+    var dni=req.params.dni;
+    alumno.mediaAlumno(dni,function(rows,status){
+        if(rows[0].media_alumno!=null){
+            if(status!=500)
+                res.json({"message":"la nota media del alumno con dni: "+dni+" es "+rows[0].media_alumno});
+            else
+                res.status(status).json(rows)
+        }else{
+            res.json({"message":"el alumno con dni: "+dni+" no esta matriculado en ninguna asignatura"});
+      }
+  });
+};
 //crear alumno
 module.exports.postAlumnos = function(req, res){
     var alumnoBody=req.body;

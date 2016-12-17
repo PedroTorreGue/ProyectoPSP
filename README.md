@@ -23,6 +23,10 @@ obtener la nota media de todos los alumnos
 ```
 https://ip:3000/getMediaAlumnos
 ```
+obtener la nota media de un alumno
+```
+https://ip:3000/MediaAlumno/dni
+```
 obtener todas las asignaturas
 ```
 https://ip:3000/Asignaturas

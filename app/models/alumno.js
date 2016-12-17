@@ -54,3 +54,13 @@ module.exports.getMediaAlumnos = function(callback){
         callback(rows);
   });
 };
+
+//obtener la nota media de un alumno
+module.exports.mediaAlumno = function(dni,callback){ 
+    db.query('select media_alumno(?)',[dni], function(err, rows, fields) {
+        if (err) callback({"message":"se ha producido un error al obtener la media"},500);
+        rows = JSON.stringify(rows).replace(/media_alumno\(\'\w+\'\)/i, 'media_alumno'); // convertimos el json a string para poder quitarle () a obtener_media()
+        rows = JSON.parse(rows);
+        callback(rows);
+  });
+};
